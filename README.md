@@ -28,7 +28,7 @@ Demonstra a estrutura de dados e as regras de negócio, divididas nos pacotes l�
 ### 3. Diagrama de Componentes
 Ilustra a arquitetura de software, destacando as interfaces disponibilizadas por cada módulo e o fluxo de dependência até a base de dados.
 <br>
-<img width="10000px" src="./images/Diagrama-componentes.svg" alt="Diagrama de Componentes"/>
+<img width="15000px" src="./images/Diagrama-componentes.svg" alt="Diagrama de Componentes"/>
 
 ### 4. Diagrama de Implantação
 Mapeia a topologia física da rede, demonstrando a execução do sistema via Monolito Modular Java (`.jar`) e banco de dados relacional.
