@@ -18,19 +18,19 @@ Abaixo estão os diagramas modelados para a solução, desenvolvidos utilizando 
 ### 1. Diagrama de Caso de Uso
 Apresenta as interações principais dos atores (Atleta e Administrador) com as funcionalidades do sistema.
 <br>
-<img width="1000px" src="./images/Diagrama-casos-de-uso.svg" alt="Diagrama de Caso de Uso"/>
+<img width="900px" src="./images/Diagrama-casos-de-uso.svg" alt="Diagrama de Caso de Uso"/>
 
 ### 2. Diagrama de Classes e Pacotes
 Demonstra a estrutura de dados e as regras de negócio, divididas nos pacotes lógicos de Gestão de Eventos, Participantes e Resultados.
 <br>
-<img width="1500px" src="./images/Diagrama-de-classes.svg" alt="Diagrama de Classes"/>
+<img width="900px" src="./images/Diagrama-de-classes.svg" alt="Diagrama de Classes"/>
 
 ### 3. Diagrama de Componentes
 Ilustra a arquitetura de software, destacando as interfaces disponibilizadas por cada módulo e o fluxo de dependência até a base de dados.
 <br>
-<img width="2000px" src="./images/Diagrama-componentes.svg" alt="Diagrama de Componentes"/>
+<img width="900px" src="./images/Diagrama-componentes.svg" alt="Diagrama de Componentes"/>
 
 ### 4. Diagrama de Implantação
 Mapeia a topologia física da rede, demonstrando a execução do sistema via Monolito Modular Java (`.jar`) e banco de dados relacional.
 <br>
-<img width="1000px" src="./images/Diagrama-de-implantaçao.svg" alt="Diagrama de Implantação"/>
+<img width="900px" src="./images/Diagrama-de-implantaçao.svg" alt="Diagrama de Implantação"/>
