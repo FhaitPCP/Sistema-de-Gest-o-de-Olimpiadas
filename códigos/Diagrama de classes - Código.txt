@@ -1,0 +1,70 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
+package "GestaoDeParticipantes" {
+    class País {
+        - nome: String
+        - medalhasOuro: Integer
+        - medalhasPrata: Integer
+        - medalhasBronze: Integer
+        + atualizarQuadroMedalhas(): void
+    }
+
+    class Atleta {
+        - nome: String
+        - passaporte: String
+    }
+}
+
+package "GestaoDeEventos" {
+    class Local {
+        - nome: String
+        - capacidade: Integer
+        + verificarDisponibilidade(data: Date, horario: Time): Boolean
+    }
+
+    class Competição {
+        - nomeModalidade: String
+        - data: Date
+        - horario: Time
+        + validarAlocacao(): Boolean
+    }
+    
+    class Inscricao <<Association>> {
+        - dataInscricao: Date
+        + validarPaisUnicoPorModalidade(): Boolean
+    }
+}
+
+package "GestaoDeResultados" {
+    class Resultado {
+        + registrarPodio(ouro: Atleta, prata: Atleta, bronze: Atleta): void
+        + gerarRelatorioMedalhas(): void
+    }
+}
+
+' Relacionamentos
+Atleta "1" -- "*" Inscricao
+Competição "1" -- "*" Inscricao
+Inscricao "*" -- "1" País : "Representa"
+
+Competição "*" -- "1" Local : "Ocorre em"
+Competição "1" -- "0..1" Resultado : "Possui"
+
+Resultado --> "1" Atleta : "1º Lugar (Ouro)"
+Resultado --> "1" Atleta : "2º Lugar (Prata)"
+Resultado --> "1" Atleta : "3º Lugar (Bronze)"
+
+note bottom of Inscricao
+  Garante que o Atleta
+  represente apenas um 
+  País nesta modalidade.
+end note
+
+note right of Local
+  Um local só pode abrigar
+  uma competição por vez.
+end note
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Administrador" as admin
+actor "Atleta" as atleta
+
+package "Sistema de Gestão das Olimpíadas (SGO)" {
+    usecase "Cadastrar Competição" as UC1
+    usecase "Inscrever Atleta" as UC2
+    usecase "Alocar Local" as UC3
+    usecase "Registrar Resultados" as UC4
+    usecase "Gerar Relatórios de Medalhas" as UC5
+}
+
+' Interações do Administrador
+admin --> UC1
+admin --> UC4
+admin --> UC5
+
+' Interações do Atleta
+atleta --> UC2
+
+' Relacionamentos (Includes)
+UC1 ..> UC3 : <<include>>
+
+' Notas para documentar as regras de negócio
+note right of UC2 : Atleta representa apenas\num país por modalidade.
+note right of UC3 : Evitar conflitos de horário.\nUm local = uma competição por vez.
+note right of UC4 : Determinar 1º, 2º e 3º lugares.
+
+@enduml
