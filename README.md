@@ -18,7 +18,7 @@ Abaixo estão os diagramas modelados para a solução, desenvolvidos utilizando 
 ### 1. Diagrama de Caso de Uso
 Apresenta as interações principais dos atores (Atleta e Administrador) com as funcionalidades do sistema.
 <br>
-<img width="10000px" src="./imagens/Diagrama-casos-de-uso.svg" alt="Diagrama de Caso de Uso"/>
+<img width="10000px" src="./images/Diagrama-casos-de-uso.svg" alt="Diagrama de Caso de Uso"/>
 
 ### 2. Diagrama de Classes e Pacotes
 Demonstra a estrutura de dados e as regras de negócio, divididas nos pacotes lógicos de Gestão de Eventos, Participantes e Resultados.
