@@ -13,7 +13,7 @@ As histórias abaixo foram extraídas das regras de negócio críticas do sistem
 
 ## 📐 Diagramas UML
 
-Abaixo estão os diagramas modelados para a solução, desenvolvidos utilizando a ferramenta PlantUML. Os códigos fonte `.puml` encontram-se na pasta `/codigos` deste repositório.
+Abaixo estão os diagramas modelados para a solução, desenvolvidos utilizando a ferramenta PlantUML. Os códigos fonte `.txt` encontram-se na pasta `/codigos` deste repositório.
 
 ### 1. Diagrama de Caso de Uso
 Apresenta as interações principais dos atores (Atleta e Administrador) com as funcionalidades do sistema.
