@@ -1,0 +1,53 @@
+@startuml
+left to right direction
+skinparam componentStyle uml2
+
+component "Interface de Usuário\n<<React/Angular>>" as UI
+
+package "SGO - Core Backend (Spring Boot Monolith)" {
+    
+    component "API Gateway & Security\n(Spring Security)" as Gateway
+    
+    component "Módulo de Competições" as ModComp
+    component "Módulo de Inscrições" as ModInsc
+    component "Módulo de Alocação" as ModAloc
+    component "Módulo de Resultados" as ModRel
+    
+    ' Interfaces Fornecidas (Contratos/APIs)
+    interface "ICompeticao" as IComp
+    interface "IInscricao" as IInsc
+    interface "IAlocacao" as IAloc
+    interface "IResultado" as IRel
+    
+    ModComp -up- IComp
+    ModInsc -up- IInsc
+    ModAloc -up- IAloc
+    ModRel -up- IRel
+}
+
+database "Camada de Dados" as DB {
+    interface "JPA / Hibernate" as IDB
+}
+
+' Fluxo de Requisições
+UI ..> Gateway : "HTTPS / JSON"
+Gateway ..> IComp
+Gateway ..> IInsc
+Gateway ..> IAloc
+Gateway ..> IRel
+
+' Dependências entre módulos (Regras de Negócio)
+ModInsc ..> IComp : "Consulta modalidade"
+ModAloc ..> IComp : "Associa local"
+ModRel ..> IComp : "Registra pódio"
+
+' Acesso ao Banco de Dados
+ModComp ..> IDB
+ModInsc ..> IDB
+ModAloc ..> IDB
+ModRel ..> IDB
+
+IDB - [PostgreSQL]
+
+note bottom of Gateway : Centraliza autenticação e\nroteamento das requisições.
+@enduml

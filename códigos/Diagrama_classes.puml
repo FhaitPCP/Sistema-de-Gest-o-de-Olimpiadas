@@ -1,0 +1,84 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam packageStyle frame
+
+package "Gestão de Participantes" {
+    class Pais {
+        - id: int
+        - nome: String
+        - sigla: String
+        + getQuadroMedalhas(): Map<String, Integer>
+        + incrementarMedalha(tipo: String): void
+    }
+
+    class Atleta {
+        - idAtleta: long
+        - nome: String
+        - passaporte: String
+        - dataNascimento: Date
+        + validarElegibilidade(): boolean
+    }
+}
+
+package "Gestão de Eventos" {
+    class Local {
+        - idLocal: int
+        - nome: String
+        - capacidade: int
+        - endereco: String
+        + verificarConflito(data: Date, horario: Time): boolean
+    }
+
+    class Competicao {
+        - idCompeticao: long
+        - modalidade: String
+        - data: Date
+        - horario: Time
+        + adicionarAtleta(atleta: Atleta): void
+        + setLocal(local: Local): void
+    }
+
+    class Inscricao <<Association>> {
+        - dataInscricao: Date
+        - status: String
+        + validarRegraPaisPorModalidade(): boolean
+    }
+}
+
+package "Gestão de Resultados" {
+    class Resultado {
+        - idResultado: long
+        - dataRegistro: Date
+        + registrarVencedores(ouro: Atleta, prata: Atleta, bronze: Atleta): void
+        + emitirRelatorioParcial(): String
+    }
+
+    class Medalha {
+        - tipo: EnumTipoMedalha
+        - dataEntrega: Date
+    }
+
+    enum EnumTipoMedalha {
+        OURO
+        PRATA
+        BRONZE
+    }
+}
+
+' Relacionamentos e Multiplicidades
+Atleta "1" *-- "1" Pais : representa >
+Atleta "1..*" -- "*" Competicao : participa
+(Atleta, Competicao) .. Inscricao 
+
+Competicao "*" o-- "1" Local : ocorre em
+Competicao "1" -- "0..1" Resultado : gera
+
+Resultado "1" *-- "3" Medalha : possui
+Medalha "1" --> "1" Atleta : atribuída a 
+Medalha "*" -- "1" Pais : contabilizada para
+
+' Notas de Regras de Negócio
+note top of Local : RN03: Um local só pode abrigar\numa competição por vez.
+note bottom of Inscricao : RN02: O atleta representa apenas\num país em cada modalidade.
+@enduml

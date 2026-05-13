@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+skinparam node {
+    BackgroundColor White
+    BorderColor DarkSlateGray
+}
+
+node "Dispositivo do Cliente" as client <<device>> {
+    node "Navegador Web" as browser <<executionEnvironment>> {
+        artifact "SGO Frontend\n<<SPA Artifact>>" as frontend
+    }
+}
+
+node "Servidor de Aplicação (Cloud/Linux)" as appserver <<device>> {
+    node "Docker Container" as docker <<executionEnvironment>> {
+        node "Java Runtime (JRE 21)" as jre <<executionEnvironment>> {
+            artifact "sgo-backend.jar\n<<Spring Boot Executable>>" as backend
+        }
+    }
+}
+
+node "Servidor de Banco de Dados" as dbserver <<device>> {
+    node "PostgreSQL Instance" as sgbd <<executionEnvironment>> {
+        database "SGO_DB" as db
+    }
+}
+
+' Conexões e Protocolos
+client -- appserver : <<protocol>>\nHTTPS (Port 443)
+appserver -- dbserver : <<protocol>>\nJDBC (Port 5432)
+
+note bottom of appserver
+  Hospeda a API REST e as
+  regras de negócio do sistema.
+end note
+@enduml
