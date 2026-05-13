@@ -1,6 +1,14 @@
 # Sistema de Gestão de Olimpíadas (SGO)
 Sistema para gestão de competições esportivas para a disciplina de Projeto de Software. Este repositório contém toda a documentação necessária para este projeto.
 
+# Detalhamento
+O projeto do SGO visa atender aos usuários do sistema na organização de eventos esportivos de médio/grande porte. Para tal, decidi utilizar uma arquitetura mais enxuta, porém modular e escalável o suficiente para que o sistema seja de fácil manutenção e organização, sendo um monólito modular.
+
+As tecnologias escolhidas para uma possível implementação posterior foram:
+* Spring Boot java para back-end;
+* React para front-end;
+* PostgreSQL para persistência de dados.
+
 ## 🎯 Histórias de Usuário (User Stories)
 
 As histórias abaixo foram extraídas das regras de negócio e da modelagem do sistema:
